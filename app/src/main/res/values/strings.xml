@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SaveMoneyAccount</string>
+
+    <string name="button">Button</string>
+    <string name="profil">profil</string>
+    <string name="wydatki">wydatki</string>
+    <string name="ogolne_wydatki">Ogólne wydatki</string>
+    <string name="wartosc">wartosc</string>
+    <string name="warto_zobowiazan">Wartość Zobowiązań</string>
+    <string name="wartosc_zobowiazan">Wartość</string>
+    <string name="wartosc_ogolna">Wartosc</string>
+    <string name="horizontalLane">horizontalLane</string>
+    <string name="plus">+</string>
+</resources>
