@@ -11,4 +11,21 @@
     <string name="wartosc_ogolna">Wartosc</string>
     <string name="horizontalLane">horizontalLane</string>
     <string name="plus">+</string>
+    <string name="Value">Name</string>
+    <string name="Name">Name</string>
+    <string name="koszt">Koszt</string>
+    <string name="nazwa">Nazwa</string>
+    <string name="nazwa_produktu">nazwa produktu</string>
+    <string name="miesiac">miesiąc</string>
+    <string name="wpisz_tutaj_tytu">Wpisz tutaj tytuł</string>
+    <string name="wpisz_tutaj_opis">Wpisz tutaj Opis</string>
+    <string name="title_activity_add_new_expense">AddNewExpenseActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
