@@ -1,4 +1,4 @@
-package pl.mradziewicz.savemoneyaccount
+package pl.mradziewicz.savemoneyaccount.data
 
 object CostsDataBase {
     var productName = arrayListOf<String>()

@@ -15,7 +15,7 @@
         android:hint="@string/wpisz_tutaj_tytu"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="title"
+        android:text="tytul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"

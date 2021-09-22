@@ -1,8 +1,7 @@
 package pl.mradziewicz.savemoneyaccount
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityAddCostBinding
 
 class AddCostActivity : AppCompatActivity() {
@@ -15,12 +14,12 @@ class AddCostActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            val sendValue = Intent(this, ExpensesActivity::class.java)
-            sendValue.putExtra("cost", binding.valueEditText.text)
-            sendValue.putExtra("name", binding.nameEditText.text)
-            CostsDataBase.productName.add(binding.nameEditText.text.toString())
-            println(CostsDataBase.productName[0])
-            startActivity(sendValue)
+//            val sendValue = Intent(this, ExpensesActivity::class.java)
+//            sendValue.putExtra("cost", binding.valueEditText.text)
+//            sendValue.putExtra("name", binding.nameEditText.text)
+//            CostsDataBase.productName.add(binding.nameEditText.text.toString())
+//            println(CostsDataBase.productName[0])
+//            startActivity(sendValue)
         }
 
     }
