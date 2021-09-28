@@ -1,10 +1,7 @@
 package pl.mradziewicz.savemoneyaccount.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 
 @Dao

@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import pl.mradziewicz.savemoneyaccount.adapter.MonthlyExpenseAdapter
-import pl.mradziewicz.savemoneyaccount.data.CostsDataBase
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityAddNewGroupExpenseBinding
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpenseViewModel
@@ -22,29 +20,43 @@ class AddNewGroupExpense : AppCompatActivity() {
 
         binding = ActivityAddNewGroupExpenseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        addExpenseGroup()
+        val title = intent.getStringExtra("title")
+        val desc = intent.getStringExtra("desc")
+        if(title.equals(null) && desc.equals(null)) {
+            addExpanseGroup()
+        }
+        else{
+            val title = intent.getStringExtra("title").toString()
+            val desc = intent.getStringExtra("desc").toString()
+            val position = intent.getStringExtra("id")?.toInt()
+            editExpenseGroup(title, desc, position)
+        }
     }
 
-    private fun addExpenseGroup() {
-        binding.acceptButton.setOnClickListener {
-            val acceptGroup = Intent(this, MainActivity::class.java)
-//                acceptGroup.putExtra("title", binding.titleEditText.text)
-//                acceptGroup.putExtra("name", binding.descriptionEditText.text)
-//                CostsDataBase.listOfTitleExpenses.add(binding.titleEditText.text.toString())
-//                CostsDataBase.listOfDescExpenses.add(binding.descriptionEditText.text.toString())
+    private fun editExpenseGroup(title: String?, desc: String?, position: Int?) {
+        binding.titleEditText.setText(title)
+        binding.descriptionEditText.setText(desc)
+        binding.acceptButton.setOnClickListener{
             val title = binding.titleEditText.text.toString()
             val desc = binding.descriptionEditText.text.toString()
-            var expenses = Expenses(title, desc)
+            val acceptGroup = Intent(this, MainActivity::class.java)
+            val expense = Expenses(title, desc)
+            val factory = ExpenseViewModelFactory()
+            val expenseViewModel = ViewModelProvider(this, factory).get(ExpenseViewModel::class.java)
+            expenseViewModel.update(position, expense)
+            startActivity(acceptGroup)
+        }
+    }
+
+    private fun addExpanseGroup() {
+        binding.acceptButton.setOnClickListener {
+            val title = binding.titleEditText.text.toString()
+            val desc = binding.descriptionEditText.text.toString()
+            val acceptGroup = Intent(this, MainActivity::class.java)
+            val expenses = Expenses(title, desc)
             val factory = ExpenseViewModelFactory()
             expenseViewModel = ViewModelProvider(this, factory).get(ExpenseViewModel::class.java)
             expenseViewModel.add(expenses)
-            println(title)
-            println(expenseViewModel.expenseList.value)
-            println(desc)
-            println(expenseViewModel.expenseList.value)
-            println("Tytuł i opis klasy ${expenses.title}, ${expenses.desc}")
-            println(expenseViewModel.addExpense[0].title)
-            println(expenseViewModel.addExpense[0].desc)
             startActivity(acceptGroup)
         }
     }
