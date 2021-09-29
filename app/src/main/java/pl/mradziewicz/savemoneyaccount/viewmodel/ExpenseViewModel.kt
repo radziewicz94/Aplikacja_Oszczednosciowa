@@ -9,12 +9,27 @@ class ExpenseViewModel: ViewModel() {
     var addExpense = ArrayList<Expenses>()
 
     fun add(expenses: Expenses){
-        addExpense.add(expenses)
-        expenseList.value = addExpense
+        if(expenses.title?.length!! > 26)
+        {
+            wordLenghtConversion(expenses)
+        }
+            addExpense.add(expenses)
+            expenseList.value = addExpense
     }
     fun update(id: Int, expenses: Expenses){
+        if(expenses.title?.length!! > 26)
+        {
+            wordLenghtConversion(expenses)
+        }
         addExpense[id] = expenses
         expenseList.value = addExpense
+    }
+    private fun wordLenghtConversion(expenses: Expenses){
+        val lengthAfterRepleace = (expenses.title!!.length - 26) + 26
+        val sb = StringBuilder().append(expenses.title)
+        sb.delete(26, lengthAfterRepleace)
+        sb.insert(26, "...")
+        expenses.title = sb.toString()
     }
 
 }

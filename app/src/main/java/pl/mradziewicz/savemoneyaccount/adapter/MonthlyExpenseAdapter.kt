@@ -29,6 +29,7 @@ class MonthlyExpenseAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        //27
         holder.bind(arrayList[position])
         holder.trash.setOnClickListener {
             alertDialog(holder, position)
@@ -72,7 +73,7 @@ class MonthlyExpenseAdapter(
 }
 
 class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    private val title: TextView = view.findViewById(R.id.title_textView)
+    private var title: TextView = view.findViewById(R.id.title_textView)
     private val desc: TextView = view.findViewById(R.id.description_textView)
     val trash: ImageView = view.findViewById(R.id.trash_icon)
     val cardView: CardView = view.findViewById(R.id.cardView)
