@@ -33,13 +33,17 @@ class MonthlyExpenseAdapter(
         holder.trash.setOnClickListener {
             alertDialog(holder, position)
         }
+
         editNoteListener(holder, position)
     }
 
-    private fun editNoteListener(holder: MyViewHolder, position: Int) {
-        holder.cardView.setOnLongClickListener{ view ->
-            var intent = Intent(view.context, AddNewGroupExpense::class.java)
+    override fun getItemCount(): Int {
+        return arrayList.size
+    }
 
+    private fun editNoteListener(holder: MyViewHolder, position: Int) {
+        holder.cardView.setOnLongClickListener { view ->
+            val intent = Intent(view.context, AddNewGroupExpense::class.java)
             intent.putExtra("title", arrayList[position].title.toString())
             intent.putExtra("desc", arrayList[position].desc.toString())
             intent.putExtra("id", position)
@@ -48,7 +52,7 @@ class MonthlyExpenseAdapter(
         }
     }
 
-    private fun alertDialog(holder: MyViewHolder, position: Int){
+    private fun alertDialog(holder: MyViewHolder, position: Int) {
         val alert = AlertDialog.Builder(holder.view.context)
             .setTitle("Usunięcie notatkę ${arrayList[position].title}")
             .setMessage("Czy jesteś pewien że chcesz to usunąć")
@@ -58,19 +62,16 @@ class MonthlyExpenseAdapter(
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, arrayList.size)
         }
-        alert.setNegativeButton(android.R.string.cancel){dialog, id ->
+        alert.setNegativeButton(android.R.string.cancel) { dialog, id ->
             dialog.cancel()
         }
 
         alert.show()
     }
 
-    override fun getItemCount(): Int {
-        return arrayList.size
-    }
 }
 
-class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){
+class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     private val title: TextView = view.findViewById(R.id.title_textView)
     private val desc: TextView = view.findViewById(R.id.description_textView)
     val trash: ImageView = view.findViewById(R.id.trash_icon)

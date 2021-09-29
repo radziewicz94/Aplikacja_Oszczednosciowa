@@ -12,14 +12,9 @@ class ExpenseViewModel: ViewModel() {
         addExpense.add(expenses)
         expenseList.value = addExpense
     }
-    fun remove(expenses: Expenses){
-        addExpense.remove(expenses)
+    fun update(id: Int, expenses: Expenses){
+        addExpense[id] = expenses
         expenseList.value = addExpense
     }
-    fun update(id: Int?, expenses: Expenses){
-        addExpense.removeAt(id!!)
-        addExpense.add(id, expenses)
-        expenseList.value?.removeAt(id)
-        expenseList.value?.add(id, expenses)
-    }
+
 }
