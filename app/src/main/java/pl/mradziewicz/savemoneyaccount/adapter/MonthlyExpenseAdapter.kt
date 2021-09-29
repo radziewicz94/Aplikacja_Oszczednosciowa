@@ -10,14 +10,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import pl.mradziewicz.savemoneyaccount.AddNewGroupExpense
+import pl.mradziewicz.savemoneyaccount.AddNewGroupExpenses
+import pl.mradziewicz.savemoneyaccount.Expense
 import pl.mradziewicz.savemoneyaccount.MainActivity
 import pl.mradziewicz.savemoneyaccount.R
 import pl.mradziewicz.savemoneyaccount.model.Expenses
-import pl.mradziewicz.savemoneyaccount.viewmodel.ExpenseViewModel
+import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 
 class MonthlyExpenseAdapter(
-    var expenseViewModel: ExpenseViewModel,
+    var expensesViewModel: ExpensesViewModel,
     var arrayList: ArrayList<Expenses>,
     var mainActivity: MainActivity
 ) : RecyclerView.Adapter<MyViewHolder>() {
@@ -29,22 +30,26 @@ class MonthlyExpenseAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //27
         holder.bind(arrayList[position])
         holder.trash.setOnClickListener {
             alertDialog(holder, position)
         }
-
         editNoteListener(holder, position)
+        addExpensesToSpecificGroup(holder)
     }
 
     override fun getItemCount(): Int {
         return arrayList.size
     }
-
+    private fun addExpensesToSpecificGroup(holder: MyViewHolder) {
+        holder.cardView.setOnClickListener {
+            val intent = Intent(it.context, Expense::class.java)
+            startActivity(it.context, intent, null)
+        }
+    }
     private fun editNoteListener(holder: MyViewHolder, position: Int) {
         holder.cardView.setOnLongClickListener { view ->
-            val intent = Intent(view.context, AddNewGroupExpense::class.java)
+            val intent = Intent(view.context, AddNewGroupExpenses::class.java)
             intent.putExtra("title", arrayList[position].title.toString())
             intent.putExtra("desc", arrayList[position].desc.toString())
             intent.putExtra("id", position)

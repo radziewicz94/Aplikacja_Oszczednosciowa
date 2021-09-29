@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExpensesActivity">
+    tools:context=".Expense">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expense_RV"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,13 +20,14 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button"
-        android:text="@string/plus"
+        android:text="@string/plusBTN"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.927" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

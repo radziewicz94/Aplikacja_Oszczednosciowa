@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 
-class ExpenseViewModel: ViewModel() {
+class ExpensesViewModel: ViewModel() {
     var expenseList = MutableLiveData<ArrayList<Expenses>>()
     var addExpense = ArrayList<Expenses>()
 

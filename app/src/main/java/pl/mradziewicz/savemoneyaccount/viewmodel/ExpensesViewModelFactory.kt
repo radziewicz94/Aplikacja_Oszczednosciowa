@@ -4,15 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
-class ExpenseViewModelFactory(): ViewModelProvider.Factory {
+class ExpensesViewModelFactory(): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(ExpenseViewModel::class.java)){
+        if(modelClass.isAssignableFrom(ExpensesViewModel::class.java)){
             val key = "UserProfileViewModel"
             return if(hashMapViewModel.containsKey(key)){
                 getViewModel(key) as T
             }else {
-                addViewModel(key, ExpenseViewModel())
-                ExpenseViewModel() as T
+                addViewModel(key, ExpensesViewModel())
+                ExpensesViewModel() as T
             }
         }
         throw IllegalArgumentException("Nieznany View model")

@@ -6,13 +6,13 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityAddNewGroupExpenseBinding
 import pl.mradziewicz.savemoneyaccount.model.Expenses
-import pl.mradziewicz.savemoneyaccount.viewmodel.ExpenseViewModel
-import pl.mradziewicz.savemoneyaccount.viewmodel.ExpenseViewModelFactory
+import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
+import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModelFactory
 
-class AddNewGroupExpense : AppCompatActivity() {
+class AddNewGroupExpenses : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddNewGroupExpenseBinding
-    private lateinit var expenseViewModel: ExpenseViewModel
+    private lateinit var expensesViewModel: ExpensesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class AddNewGroupExpense : AppCompatActivity() {
             val acceptGroup = Intent(this, MainActivity::class.java)
             val expense = getText()
             if (position != null) {
-                expenseViewModel.update(position, expense)
+                expensesViewModel.update(position, expense)
             }
             startActivity(acceptGroup)
         }
@@ -49,7 +49,7 @@ class AddNewGroupExpense : AppCompatActivity() {
         binding.acceptButton.setOnClickListener {
             val expenses = getText()
             val acceptGroup = Intent(this, MainActivity::class.java)
-            expenseViewModel.add(expenses)
+            expensesViewModel.add(expenses)
             startActivity(acceptGroup)
         }
     }
@@ -58,8 +58,8 @@ class AddNewGroupExpense : AppCompatActivity() {
         val title = binding.titleEditText.text.toString()
         val desc = binding.descriptionEditText.text.toString()
         val expenses = Expenses(title, desc)
-        val factory = ExpenseViewModelFactory()
-        expenseViewModel = ViewModelProvider(this, factory).get(ExpenseViewModel::class.java)
+        val factory = ExpensesViewModelFactory()
+        expensesViewModel = ViewModelProvider(this, factory).get(ExpensesViewModel::class.java)
         return expenses
     }
 }
