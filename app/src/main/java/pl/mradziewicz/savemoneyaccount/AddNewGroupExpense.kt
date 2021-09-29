@@ -31,6 +31,8 @@ class AddNewGroupExpense : AppCompatActivity() {
     }
 
     private fun editExpenseGroup(title: String?, desc: String?, position: Int?) {
+        var title = title
+        if(title?.contains("...")!!) title = title.replace("...", "")
         binding.titleEditText.setText(title)
         binding.descriptionEditText.setText(desc)
         binding.acceptButton.setOnClickListener {
