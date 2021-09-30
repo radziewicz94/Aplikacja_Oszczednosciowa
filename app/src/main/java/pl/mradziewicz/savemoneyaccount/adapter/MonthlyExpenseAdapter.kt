@@ -78,10 +78,10 @@ class MonthlyExpenseAdapter(
 }
 
 class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    private var title: TextView = view.findViewById(R.id.title_textView)
-    private val desc: TextView = view.findViewById(R.id.description_textView)
+    private var title: TextView = view.findViewById(R.id.value_expenseItem_TV)
+    private val desc: TextView = view.findViewById(R.id.name_expenseItem_TV)
     val trash: ImageView = view.findViewById(R.id.trash_icon)
-    val cardView: CardView = view.findViewById(R.id.cardView)
+    val cardView: CardView = view.findViewById(R.id.cardView_expenseItem)
     fun bind(expenses: Expenses) {
         title.text = expenses.title
         desc.text = expenses.desc

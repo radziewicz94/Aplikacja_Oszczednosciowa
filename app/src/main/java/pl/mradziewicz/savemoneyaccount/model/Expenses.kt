@@ -5,6 +5,6 @@ import androidx.room.PrimaryKey
 
 class Expenses(
     var title: String?,
-    var desc: String?) {
-
+    var desc: String?,
+    ) {
 }

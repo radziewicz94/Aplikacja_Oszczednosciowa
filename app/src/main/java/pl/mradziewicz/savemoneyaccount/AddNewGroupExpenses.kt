@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityAddNewGroupExpenseBinding
+import pl.mradziewicz.savemoneyaccount.model.ExpenseItem
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModelFactory
@@ -13,6 +14,8 @@ class AddNewGroupExpenses : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddNewGroupExpenseBinding
     private lateinit var expensesViewModel: ExpensesViewModel
+   // private var lista: ArrayList<ExpenseItem> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +24,8 @@ class AddNewGroupExpenses : AppCompatActivity() {
         setContentView(binding.root)
         val title = intent.getStringExtra("title")
         val desc = intent.getStringExtra("desc")
+        val name = intent.getStringExtra("name")
+        val value = intent.getDoubleExtra("value", 0.0)
         val position = intent.getIntExtra("id", 0)
 
         if (title.equals(null) && desc.equals(null)) {
@@ -37,7 +42,7 @@ class AddNewGroupExpenses : AppCompatActivity() {
         binding.descriptionEditText.setText(desc)
         binding.acceptButton.setOnClickListener {
             val acceptGroup = Intent(this, MainActivity::class.java)
-            val expense = getText()
+            val expense = getExpensesNameGroup()
             if (position != null) {
                 expensesViewModel.update(position, expense)
             }
@@ -47,14 +52,18 @@ class AddNewGroupExpenses : AppCompatActivity() {
 
     private fun addExpanseGroup() {
         binding.acceptButton.setOnClickListener {
-            val expenses = getText()
+            val expenses = getExpensesNameGroup()
             val acceptGroup = Intent(this, MainActivity::class.java)
             expensesViewModel.add(expenses)
             startActivity(acceptGroup)
         }
     }
 
-    private fun getText(): Expenses {
+//    private fun getExpenseItem(): ExpenseItem {
+//        return ExpenseItem(name,cost)
+//    }
+
+    private fun getExpensesNameGroup(): Expenses {
         val title = binding.titleEditText.text.toString()
         val desc = binding.descriptionEditText.text.toString()
         val expenses = Expenses(title, desc)

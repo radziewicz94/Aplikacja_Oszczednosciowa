@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 
 class ExpensesViewModel: ViewModel() {
-    var expenseList = MutableLiveData<ArrayList<Expenses>>()
+    var expensesLiveData = MutableLiveData<ArrayList<Expenses>>()
     var addExpense = ArrayList<Expenses>()
 
     fun add(expenses: Expenses){
@@ -14,7 +14,7 @@ class ExpensesViewModel: ViewModel() {
             wordLenghtConversion(expenses)
         }
             addExpense.add(expenses)
-            expenseList.value = addExpense
+            expensesLiveData.value = addExpense
     }
     fun update(id: Int, expenses: Expenses){
         if(expenses.title?.length!! > 26)
@@ -22,7 +22,7 @@ class ExpensesViewModel: ViewModel() {
             wordLenghtConversion(expenses)
         }
         addExpense[id] = expenses
-        expenseList.value = addExpense
+        expensesLiveData.value = addExpense
     }
     private fun wordLenghtConversion(expenses: Expenses){
         val lengthAfterRepleace = (expenses.title!!.length - 26) + 26

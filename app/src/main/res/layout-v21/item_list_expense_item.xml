@@ -28,8 +28,11 @@
                 android:id="@+id/value_expenseItem_TV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="title"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/value_expenseItem"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +54,8 @@
                 android:layout_marginEnd="23dp"
                 android:src="@drawable/ic_trash_foreground"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="72dp" />
+                tools:layout_editor_absoluteY="72dp"
+                android:contentDescription="@string/trash_expenseItem" />
 
             <TextView
                 android:id="@+id/name_expenseItem_TV"
@@ -60,7 +64,7 @@
                 android:layout_below="@+id/value_expenseItem_TV"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="description"
+                android:text="@string/name_expenseItem"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
