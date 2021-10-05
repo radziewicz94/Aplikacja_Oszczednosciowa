@@ -11,7 +11,7 @@ class ExpenseItemViewModelFactory: ViewModelProvider.Factory {
             return if(hashMapViewModel.containsKey(key)){
                 getViewModel(key) as T
             }else {
-                addViewModel(key, ExpensesViewModel())
+                addViewModel(key, ExpenseItemViewModel())
                 ExpenseItemViewModel() as T
             }
         }
