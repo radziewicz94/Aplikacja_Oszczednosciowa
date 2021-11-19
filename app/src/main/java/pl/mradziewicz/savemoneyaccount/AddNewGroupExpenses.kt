@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityAddNewGroupExpenseBinding
-import pl.mradziewicz.savemoneyaccount.model.ExpenseItem
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModelFactory
@@ -24,8 +23,7 @@ class AddNewGroupExpenses : AppCompatActivity() {
         setContentView(binding.root)
         val title = intent.getStringExtra("title")
         val desc = intent.getStringExtra("desc")
-        val name = intent.getStringExtra("name")
-        val value = intent.getDoubleExtra("value", 0.0)
+
         val position = intent.getIntExtra("id", 0)
 
         if (title.equals(null) && desc.equals(null)) {

@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData() {
         expensesViewModel.expensesLiveData.observe(this, Observer {
-            Log.i("data", it.toString())
-            binding.recyclerView.adapter = MonthlyExpenseAdapter(expensesViewModel, it, this)
+            Log.i("add monthly expense", it.toString())
+            binding.recyclerView.adapter = MonthlyExpenseAdapter(it)
 
 
         })

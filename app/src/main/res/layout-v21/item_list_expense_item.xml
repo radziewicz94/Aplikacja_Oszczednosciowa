@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+
         android:elevation="20dp"
         app:cardElevation="20dp"
         android:focusable="true"
@@ -20,42 +21,41 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="555dp">
 
             <TextView
                 android:id="@+id/value_expenseItem_TV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignLeft="@+id/name_expenseItem_TV"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_toStartOf="@+id/trashImage_expenseItem_BTN"
+                android:inputType="numberDecimal"
                 android:text="@string/value_expenseItem"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.6"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.179" />
 
             <ImageView
                 android:id="@+id/trashImage_expenseItem_BTN"
-                android:layout_width="41dp"
-                android:layout_height="33dp"
-                android:layout_alignStart="@+id/value_expenseItem_TV"
+                android:layout_width="52dp"
+                android:layout_height="51dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="322dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="23dp"
+                android:contentDescription="@string/trash_expenseItem"
                 android:src="@drawable/ic_trash_foreground"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="72dp"
-                android:contentDescription="@string/trash_expenseItem" />
+                tools:layout_editor_absoluteY="72dp" />
 
             <TextView
                 android:id="@+id/name_expenseItem_TV"
@@ -64,8 +64,9 @@
                 android:layout_below="@+id/value_expenseItem_TV"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/name_expenseItem"
-                android:textSize="14sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

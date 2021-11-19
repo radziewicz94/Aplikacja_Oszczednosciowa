@@ -3,20 +3,25 @@ package pl.mradziewicz.savemoneyaccount.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import pl.mradziewicz.savemoneyaccount.Expense
 import pl.mradziewicz.savemoneyaccount.R
-import pl.mradziewicz.savemoneyaccount.model.ExpenseItem
-import pl.mradziewicz.savemoneyaccount.viewmodel.ExpenseItemViewModel
+import pl.mradziewicz.savemoneyaccount.model.CostItems
+import pl.mradziewicz.savemoneyaccount.model.Expenses
+import java.util.*
 
-class ExpenseItemAdapter(
-    expenseItemViewModel: ExpenseItemViewModel,
-    arrayList: ArrayList<ExpenseItem>,
-    expense: Expense
-) : RecyclerView.Adapter<ExpenseItemAdapter.ExpenseItemHolder>(){
+class CostItemsAdapter(
+    val arrayList: Optional<Expenses>?,
+) : RecyclerView.Adapter<CostItemsAdapter.ExpenseItemHolder>(){
 
     inner class ExpenseItemHolder(val view: View) : RecyclerView.ViewHolder(view){
+        val costExpenseItem = view.findViewById<TextView>(R.id.value_expenseItem_TV)
+        val nameExpenseItem = view.findViewById<TextView>(R.id.name_expenseItem_TV)
 
+        fun bind(expenses: Expenses){
+            costExpenseItem.text = expenses..toString()
+            nameExpenseItem.text = costItems.name
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseItemHolder {
@@ -27,11 +32,11 @@ class ExpenseItemAdapter(
     }
 
     override fun onBindViewHolder(holder: ExpenseItemHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(arrayList?.get(position))
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return arrayList.
     }
 
 }

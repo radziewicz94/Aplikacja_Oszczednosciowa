@@ -18,9 +18,7 @@ import pl.mradziewicz.savemoneyaccount.model.Expenses
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 
 class MonthlyExpenseAdapter(
-    var expensesViewModel: ExpensesViewModel,
     var arrayList: ArrayList<Expenses>,
-    var mainActivity: MainActivity
 ) : RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
@@ -35,15 +33,18 @@ class MonthlyExpenseAdapter(
             alertDialog(holder, position)
         }
         editNoteListener(holder, position)
-        addExpensesToSpecificGroup(holder)
+        addExpensesToSpecificGroup(holder, position)
     }
 
     override fun getItemCount(): Int {
         return arrayList.size
     }
-    private fun addExpensesToSpecificGroup(holder: MyViewHolder) {
+    private fun addExpensesToSpecificGroup(holder: MyViewHolder, position: Int) {
         holder.cardView.setOnClickListener {
             val intent = Intent(it.context, Expense::class.java)
+            intent.putExtra("title", arrayList[position].title.toString())
+            println("co tutaj mamy ${arrayList[position].title.toString()}")
+            println("co tutaj mamy ${arrayList[position].title.toString()}")
             startActivity(it.context, intent, null)
         }
     }
