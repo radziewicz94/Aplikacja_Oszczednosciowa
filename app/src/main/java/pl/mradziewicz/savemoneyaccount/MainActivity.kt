@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.mradziewicz.savemoneyaccount.adapter.MonthlyExpenseAdapter
+import pl.mradziewicz.savemoneyaccount.dao.ExpenseDatabases
 import pl.mradziewicz.savemoneyaccount.databinding.ActivityMainBinding
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModelFactory
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        initDataBase()
         setContentView(binding.root)
         val factory = ExpensesViewModelFactory()
         expensesViewModel = ViewModelProvider(this,factory).get(ExpensesViewModel::class.java)
@@ -46,5 +48,9 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+    private fun initDataBase(){
+        val expenseDatabases = ExpenseDatabases.getInstance(this)
 
+        println("Sprawdzam czy załąduje sie baza danych")
+    }
 }
