@@ -27,16 +27,15 @@ class AddCostActivity : AppCompatActivity() {
         expensesViewModel = ViewModelProvider(this, factory).get(ExpensesViewModel::class.java)
         val name = intent.getStringExtra("name")
         val value = intent.getDoubleExtra("value", 0.0)
-        val title = intent.getStringExtra("title")
-
-        expensesViewModel.getExpense(title.toString())
+        val expenseTitle = intent.getStringExtra("expenseTitle")
 
         binding.acceptBTN.setOnClickListener {
             val expenseItem = getExpenseItemName()
-            val addItemIntent = Intent(this, Expense::class.java)
-            costItemsViewModel.add(expenseItem)
-                //   expensesViewModel.add(expenseItem)
-            startActivity(addItemIntent)
+            val intent = Intent(this, Expense::class.java)
+            intent.putExtra("expenseTitle", expenseTitle)
+            expensesViewModel.addCostItem(expenseTitle.toString(), expenseItem)
+
+            startActivity(intent)
         }
 
     }

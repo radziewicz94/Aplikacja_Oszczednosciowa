@@ -9,15 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveMoneyAccount">
-        <activity android:name=".AddNewGroupExpenses"></activity>
-<!--        <activity-->
-<!--            android:name=".AddNewExpenseActivity"-->
-<!--            android:label="@string/title_activity_add_new_expense"-->
-<!--            android:theme="@style/Theme.SaveMoneyAccount.NoActionBar" />-->
-        <activity android:name=".AddCostActivity" />
-<!--        <activity android:name=".ExpensesActivity" />-->
+        <activity android:name=".AddNewGroupExpenses"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".AddCostActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Expense"/>
+        <activity android:name=".Expense"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -10,10 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import pl.mradziewicz.savemoneyaccount.AddNewGroupExpenses
-import pl.mradziewicz.savemoneyaccount.Expense
-import pl.mradziewicz.savemoneyaccount.MainActivity
-import pl.mradziewicz.savemoneyaccount.R
+import pl.mradziewicz.savemoneyaccount.*
 import pl.mradziewicz.savemoneyaccount.model.Expenses
 import pl.mradziewicz.savemoneyaccount.viewmodel.ExpensesViewModel
 
@@ -42,9 +39,7 @@ class MonthlyExpenseAdapter(
     private fun addExpensesToSpecificGroup(holder: MyViewHolder, position: Int) {
         holder.cardView.setOnClickListener {
             val intent = Intent(it.context, Expense::class.java)
-            intent.putExtra("title", arrayList[position].title.toString())
-            println("co tutaj mamy ${arrayList[position].title.toString()}")
-            println("co tutaj mamy ${arrayList[position].title.toString()}")
+            intent.putExtra("expenseTitle", arrayList[position].title.toString())
             startActivity(it.context, intent, null)
         }
     }

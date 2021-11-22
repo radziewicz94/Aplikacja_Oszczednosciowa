@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pl.mradziewicz.savemoneyaccount.model.CostItems
 import pl.mradziewicz.savemoneyaccount.model.Expenses
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ExpensesViewModel: ViewModel() {
@@ -30,11 +29,32 @@ class ExpensesViewModel: ViewModel() {
         expensesLiveData.value = addExpense
     }
     @RequiresApi(Build.VERSION_CODES.N)
-    fun getExpense(test: String): List<CostItems> {
-        return expensesLiveData.value?.stream()
-            ?.filter { expense -> test == expense.title }
-            ?.map(Expenses::title)
+    fun addCostItem(expanses: String, expenseItemName: CostItems){
+        for(i in 0 until expensesLiveData.value?.size!!){
+            if(expensesLiveData.value!![i].title == expanses){
+                val expanse = expensesLiveData.value!![i]
+                expanse.costItems.add(expanse.costItems.size, expenseItemName)
+              //  expensesLiveData.value!![i].costItems.add(expanse.costItems.size, expenseItemName)
+
+            }
+        }
     }
+    /*@RequiresApi(Build.VERSION_CODES.N)
+    fun getExpense(expenseTitle: String): List<CostItems>? {
+        return expensesLiveData.value?.stream()
+            ?.filter { expense -> expenseTitle == expense.title }
+            ?.map(Expenses::costItems)
+            ?.flatMap(List::stream)
+            ?.collect(Collectors.toList())
+    }*/
+   fun getExpenseItems(expenseTitle: String): List<CostItems>? {
+       for(i in 0 until expensesLiveData.value?.size!!){
+           if(expenseTitle == expensesLiveData.value!![i].title) {
+               return expensesLiveData.value!![i].costItems
+           }
+       }
+       return emptyList()
+   }
 
     private fun wordLenghtConversion(expenses: Expenses){
         val lengthAfterRepleace = (expenses.title!!.length - 26) + 26

@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-
         android:elevation="20dp"
         app:cardElevation="20dp"
         android:focusable="true"
@@ -34,7 +33,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_toStartOf="@+id/trashImage_expenseItem_BTN"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:text="@string/value_expenseItem"
                 android:textSize="20sp"
                 android:textStyle="bold"

@@ -5,24 +5,24 @@ import androidx.lifecycle.ViewModel
 import pl.mradziewicz.savemoneyaccount.model.CostItems
 
 class CostItemsViewModel: ViewModel() {
-    var expenseItemLiveData = MutableLiveData<ArrayList<CostItems>>()
-    var expenseItemList = ArrayList<CostItems>()
+    var costItemLiveData = MutableLiveData<ArrayList<CostItems>>()
+    var costItemList = ArrayList<CostItems>()
 
     fun add(costItems: CostItems){
         if(costItems.name?.length!! > 26)
         {
             wordLenghtConversion(costItems)
         }
-        expenseItemList.add(costItems)
-        expenseItemLiveData.value = expenseItemList
+        costItemList.add(costItems)
+        costItemLiveData.value = costItemList
     }
     fun update(id: Int, costItems: CostItems){
         if(costItems.name?.length!! > 26)
         {
             wordLenghtConversion(costItems)
         }
-        expenseItemList[id] = costItems
-        expenseItemLiveData.value = expenseItemList
+        costItemList[id] = costItems
+        costItemLiveData.value = costItemList
     }
     private fun wordLenghtConversion(costItems: CostItems){
         val lengthAfterRepleace = (costItems.name!!.length - 26) + 26

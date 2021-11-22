@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:elevation="55dp"
+        android:elevation="20dp"
+        app:cardElevation="20dp"
         android:focusable="true"
         android:longClickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +21,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:elevation="555dp">
 
             <TextView
                 android:id="@+id/value_expenseItem_TV"
