@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 class CostItems (
-    @PrimaryKey(autoGenerate = true) var id: Int,
     var name: String,
-    var value: Double
-        ){
+    var value: Double,
+    @PrimaryKey(autoGenerate = true) var id: Int? = null
+    ){
 }
